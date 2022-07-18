@@ -1,0 +1,28 @@
+server:
+  port: 9000
+
+spring:
+  cloud:
+    gateway:
+      routes:
+      - id: address-service
+        uri: lb://address-service
+        predicates:
+        - Path= /api/address/**
+        
+      - id: country-service
+        uri: lb://country-service
+        predicates:
+        - Path= /api/**
+      
+  application:
+    name: api-gateway
+          
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    hostname: localhost
