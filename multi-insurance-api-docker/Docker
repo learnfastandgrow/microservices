@@ -1,0 +1,4 @@
+FROM openjdk:8
+EXPOSE 9005
+ADD target/multi-insurance-api.jar multi-insurance-api.jar
+ENTRYPOINT ["java, "-jar", "/multi-insurance-api.jar"]
